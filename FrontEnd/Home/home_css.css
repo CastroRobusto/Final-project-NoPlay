@@ -96,7 +96,6 @@ form{
     border-radius: 6px;
 }
 
-
 .field button{
     color: #fff;
     background-color: #0171d3;
@@ -106,7 +105,4 @@ form{
 .field button:hover{
     background-color: #016dcb;
 }
-
-
-
 
