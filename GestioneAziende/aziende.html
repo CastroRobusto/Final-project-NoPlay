@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dipendenti_style.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+
+    <header>
+
+        <ul>
+
+            <li style="color: yellow">NoPlay</li>
+            <li><a href="#">Profilo utente</a></li>
+            <li><span class="log-out"><a href="#">Log out</a></span></li>
+
+        </ul>
+
+
+    </header>
+
+
+
+    <section class="container forms">
+
+
+        <div class="form login">
+            
+                <h1 class="benvenuto" style="color: black;">Gestione aziende/clienti</h1>
+
+            
+            <div class="form-content">
+
+                <!-- Trigger/Open The Modal -->
+                
+                <button id="myBtn">Inserisci nuova azienda</button><br>
+                
+                
+
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div>
+                            <h1>Ragione sociale</h1>
+                            <input type="text" placeholder="ragione sociale">
+                            <h1>Partita iva</h1>
+                            <input type="text" placeholder="partita iva">
+                            <h1>Indirizzo</h1>
+                            <input type="text" placeholder="indirizzo">
+                            <h1>email</h1>
+                            <input type="email" placeholder="email">
+                            <h1>n telefono</h1>
+                            <input type="number" placeholder="ntelefono">
+
+
+                        </div>
+
+                        <div class="field button-field">
+                            <button>Invio</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+
+                    
+                </div>
+
+
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>

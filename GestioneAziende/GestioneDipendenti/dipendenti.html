@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="dipendenti_style.css">
+
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+
+    <header>
+
+        <ul>
+
+            <li><a href="#">Profilo utente</a></li>
+            <li><span class="log-out"><a href="#">Log out</a></span></li>
+
+        </ul>
+
+
+    </header>
+
+
+
+    <section class="container forms">
+
+
+        <div class="form login">
+            
+                <h1 class="benvenuto" style="color: black;">Gestione dipendenti</h1>
+
+            
+            <div class="form-content">
+
+                <!-- Trigger/Open The Modal -->
+                
+                <button id="myBtn">Inserisci nuovo dipendente</button><br>
+                
+                
+
+                <!-- Il Modale -->
+                <div id="myModal" class="modal">
+
+                    <!-- contenuto del Modale -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div>
+                            <h1>Nome</h1>
+                            <input type="text" placeholder="nome">
+                            <h1>Cognome</h1>
+                            <input type="text" placeholder="cognome">
+                            <h1>Data di nascita</h1>
+                            <input type="date">
+                            <h1>Stipendio</h1>
+                            <input type="number" placeholder="stipendio"><span> Euro</span>
+                            <h1>Data assunzione</h1>
+                            <input type="date">
+
+                            <h1>Ruolo</h1>
+                            <select>
+                                <option value="dog">sviluppatore jr</option>
+                                <option value="cat">sviluppatore senior</option>
+                                <option value="cat">tecnico</option>
+                                <option value="cat">pm</option>
+                            </select>
+
+                            <h1>Aggiungi nuovo ruolo</h1>
+                            <input type="text" placeholder="nome"><span><button>Aggiungi</button></span>
+
+                        </div>
+
+                        <div class="field button-field">
+                            <button>Invio</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+
+                    
+                </div>
+
+
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+    <!-- JavaScript -->
+    <script src="dipendenti.js"></script>
+</body>
+
+</html>
