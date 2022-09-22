@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione dipendenti</title>
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="gestioneDipendenti.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+    <header>
+        <ul>
+            <li><a href="#">Profilo utente</a></li>
+            <li><span class="log-out"><a href="#">Log out</a></span></li>
+        </ul>
+    </header>
+    <section class="container forms">
+        <div class="form login">
+            <h1 class="benvenuto" style="color: black;">Gestione dipendenti</h1>
+            <div>
+                <table>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Cognome</th>
+                        <th>Data di nascita</th>
+                        <th>Opzioni</th>
+                    </tr>
+                    <tbody id="lista-personale">
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="form-content">
+                <button id="open-aggiungi-personale">Inserisci nuovo dipendente</button><br>
+                
+                <div id="modale-aggiungi-personale" class="modal">
+
+                    <div class="modal-content">
+                        <span class="closeA">&times;</span>
+                        <div>
+                            <h2>Nome</h2>
+                            <input type="text" id="nome-dipendente" placeholder="nome">
+                            <h2>Cognome</h2>
+                            <input type="text" id="cognome-dipendente" placeholder="cognome">
+                            <h2>Data di nascita</h2>
+                            <input type="date" id="ddn-dipendente">
+                            <h2>Stipendio</h2>
+                            <input type="number" id="stipendio-dipendente" placeholder="stipendio"><span> Euro</span>
+                            <h2>Data assunzione</h2>
+                            <input type="date" id="dd-assunzione-dipendente">
+                            <h2>Azienda</h2>
+                            <select id="azienda-dipendente">
+                                
+                            </select>
+                            <h2>Ruolo</h2>
+                            <select id="ruolo-dipendente">
+                                
+                            </select>
+                            <!--
+                            <h1>Aggiungi nuovo ruolo</h1>
+                            <input type="text" placeholder="nome"><span><button>Aggiungi</button></span>
+                            -->
+                            
+                            <div class="field button-field">
+                                <button id="btn-aggiungi-personale">Invio</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modale-dettagli-personale" class="modal">
+
+                    <div class="modal-content">
+                        <span class="closeD">&times;</span>
+                        <div id="dettagli-personale">
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modale-modifica-personale" class="modal">
+
+                    <div class="modal-content">
+                        <span class="closeM">&times;</span>
+                        <div id="modifica-personale">
+                            
+                            <!--
+                            <h1>Aggiungi nuovo ruolo</h1>
+                            <input type="text" placeholder="nome"><span><button>Aggiungi</button></span>
+                            -->
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
