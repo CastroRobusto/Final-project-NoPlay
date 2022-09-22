@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Coding by CodingLab | www.codinglabweb.com-->
 <html lang="en">
 
 <head>
@@ -10,7 +9,6 @@
     <script src="jquery-3.6.0.min.js"></script>
     <script src="dipendenti.js"></script>
     <link rel="stylesheet" href="dipendenti_style.css">
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
 
@@ -21,8 +19,8 @@
             <li><span class="log-out"><a href="#">Log out</a></span></li>
         </ul>
     </header>
-    <section class="container forms">
-        <div class="form login">
+    <div class="container forms">
+        
             <h1 class="benvenuto" style="color: black;">Gestione dipendenti</h1>
             <div>
                 <table>
@@ -35,76 +33,83 @@
                     <tbody id="lista-personale">
                     </tbody>
                 </table>
-
             </div>
 
-            <div class="form-content">
-                <button id="open-aggiungi-personale">Inserisci nuovo dipendente</button><br>
-                
-                <div id="modale-aggiungi-personale" class="modal">
+        
+        <button id="open-aggiungi-personale">Inserisci nuovo dipendente</button><br>
+        
+        <div id="modale-aggiungi-personale" class="modal">
+            <div class="modal-content">
+                <span class="closeA">&times;</span>
+                <div id="aggiunta">
+                    <h2>Nome</h2>
+                    <input type="text" id="nome-dipendente" placeholder="nome">
+                    <h2>Cognome</h2>
+                    <input type="text" id="cognome-dipendente" placeholder="cognome">
+                    <h2>Data di nascita</h2>
+                    <input type="date" id="ddn-dipendente">
+                    <h2>Stipendio</h2>
+                    <input type="number" id="stipendio-dipendente" placeholder="stipendio"><span> Euro</span>
+                    <h2>Data assunzione</h2>
+                    <input type="date" id="dd-assunzione-dipendente">
+                    <h2>Azienda</h2>
+                    <select id="azienda-dipendente">
+                        
+                    </select>
+                    <h2>Ruolo</h2>
+                    <select id="ruolo-dipendente">
+                        
+                    </select>
 
-                    <div class="modal-content">
-                        <span class="closeA">&times;</span>
-                        <div>
-                            <h2>Nome</h2>
-                            <input type="text" id="nome-dipendente" placeholder="nome">
-                            <h2>Cognome</h2>
-                            <input type="text" id="cognome-dipendente" placeholder="cognome">
-                            <h2>Data di nascita</h2>
-                            <input type="date" id="ddn-dipendente">
-                            <h2>Stipendio</h2>
-                            <input type="number" id="stipendio-dipendente" placeholder="stipendio"><span> Euro</span>
-                            <h2>Data assunzione</h2>
-                            <input type="date" id="dd-assunzione-dipendente">
-                            <h2>Azienda</h2>
-                            <select id="azienda-dipendente">
-                                
-                            </select>
-                            <h2>Ruolo</h2>
-                            <select id="ruolo-dipendente">
-                                
-                            </select>
-                            <!--
-                            <h1>Aggiungi nuovo ruolo</h1>
-                            <input type="text" placeholder="nome"><span><button>Aggiungi</button></span>
-                            -->
-                            
-                            <div class="field button-field">
-                                <button id="btn-aggiungi-personale">Invio</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="modale-dettagli-personale" class="modal">
-
-                    <div class="modal-content">
-                        <span class="closeD">&times;</span>
-                        <div id="dettagli-personale">
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <div id="modale-modifica-personale" class="modal">
-
-                    <div class="modal-content">
-                        <span class="closeM">&times;</span>
-                        <div id="modifica-personale">
-                            
-                            <!--
-                            <h1>Aggiungi nuovo ruolo</h1>
-                            <input type="text" placeholder="nome"><span><button>Aggiungi</button></span>
-                            -->
-                            
-                            
-                        </div>
+                    <button class="open-gestione-ruoli">Gestisci ruoli</button>
+                    
+                    <div class="field button-field">
+                        <button id="btn-aggiungi-personale">Invio</button>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
+        <div id="modale-dettagli-personale" class="modal">
+
+            <div class="modal-content">
+                <span class="closeD">&times;</span>
+                <div id="dettagli-personale">
+                    
+                </div>
+                <button class="open-gestione-ruoli">Gestisci ruoli</button>
+            </div>
+        </div>
+
+        <div id="modale-modifica-personale" class="modal">
+
+            <div class="modal-content">
+                <span class="closeM">&times;</span>
+                <div id="modifica-personale">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div id="modale-gestione-ruoli" class="modal">
+
+            <div class="modal-content">
+                <span class="closeR">&times;</span>
+                <div>
+                    <table>
+                        <tbody id="gestione-ruoli">
+
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+                <input type="text" id="nuovo-ruolo" placeholder="Nuovo ruolo...">
+                
+                <button id="aggiunta-ruoli">Aggiungi</button>
+                
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>
