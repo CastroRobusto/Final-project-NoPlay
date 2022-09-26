@@ -13,6 +13,7 @@ $(document).ready(function () {
                     $('#azienda-dipendente-mod').html('');
                     $('#ruolo-dipendente-mod').html('');
                     getPersonale();
+                    getDisponibili();
                 } else {
                     alert('Non è stato possibile modificare il dipendente');
                 }
@@ -206,6 +207,10 @@ $(document).ready(function () {
         eliminaPersonale(+$(this).attr('data-id'));
     })
 
+    $('#lista-disponibili').on('click', '.btn-elimina-personale', function() {
+        eliminaPersonale(+$(this).attr('data-id'));
+    })
+
     function eliminaPersonale(id){
         console.log(id);
         $.ajax({
@@ -216,7 +221,9 @@ $(document).ready(function () {
 					$('#lista-personale').html('');
                     $('#azienda-dipendente').html('');
                     $('#ruolo-dipendente').html('');
+                    $('#lista-disponibili').html('');
 					getPersonale();
+                    getDisponibili();
 				} else {
 					alert('Qualcosa è andato storto');
 				}
@@ -290,13 +297,86 @@ $(document).ready(function () {
 			}
 		})
     }
+
+
+    // LISTA DEI DISPONIBILI ==================================
+
+    $('.open-gestione-disponibili').click(function(){
+        $('#lista-disponibili').html('');
+        getDisponibili();
+    })
+
+    function getDisponibili(){
+        $.get(`personale/disponibili`, function(res){
+            for(let i = 0; i < res.object.length; i++){
+                $(` <tr>
+                        <td>${res.object[i].nome}</td>
+                        <td>${res.object[i].cognome}</td>
+                        <td>${res.object[i].ddn}</td>
+                        <td>
+                            <button id="open-assegna-azienda" data-id='${res.object[i].id}'>Assegna azienda</button>
+                            <button class='btn-elimina-personale' data-id='${res.object[i].id}'>&times;</button>
+                        </td>
+                    </tr>`).appendTo($('#lista-disponibili'));
+            }
+        })
+    }
     
+    $('#lista-disponibili').on('click', '#open-assegna-azienda', function(){
+        $('#lista-disponibili').html('');
+        caricaAssegnaAzienda(+$(this).attr('data-id'));
+    })
+    
+    function caricaAssegnaAzienda(id){
+        $('#modifica-disponibile').html('');
+        console.log(id);
+        $.get(`personale/${id}`, function(res){
+            $(` <input type="hidden" id="id-dipendente-assegna" value="${res.object.id}">
+                <input type="hidden" id="nome-dipendente-assegna" value="${res.object.nome}">
+                <input type="hidden" id="cognome-dipendente-assegna" value="${res.object.cognome}">
+                <input type="hidden" id="ddn-dipendente-assegna" value="${res.object.ddn}">
+                <input type="number" id="stipendio-dipendente-assegna" placeholder="Stipendio..."><span>€</span>
+                <input type="date" id="dd-assunzione-dipendente-assegna" placeholder="Data di assunzione...">
+                <select id="azienda-dipendente-assegna"">
+                </select>
+                <select id="ruolo-dipendente-assegna">
+                </select>
+                <div class="field button-field">
+                    <button id="invia-assegna-azienda">Assegna</button>
+                </div>`).appendTo($('#modifica-disponibile'));
+            
+            getRuoli('#ruolo-dipendente-assegna');
+            getAziende('#azienda-dipendente-assegna');
+            assegnaAzienda();
+        })
+    }
+
+    function assegnaAzienda(){
+        $('#invia-assegna-azienda').click(function(){
+            const id = $('#id-dipendente-assegna').val();
+            const nome = $('#nome-dipendente-assegna').val();
+            const cognome = $('#cognome-dipendente-assegna').val();
+            const ddn = $('#ddn-dipendente-assegna').val();
+            const stipendio = +$('#stipendio-dipendente-assegna').val();
+            const dataAssunzione = $('#dd-assunzione-dipendente-assegna').val();
+            const idAzienda = +$('#azienda-dipendente-assegna').val();
+            const idRuolo = +$('#ruolo-dipendente-assegna').val();
+            const dipendenteDisp = {id, nome, cognome, ddn, stipendio, dataAssunzione, idAzienda, idRuolo};
+
+            $('#modifica-disponibile').html('');
+            modalAssegna.style.display = "none";
+
+            aggiungiDipendenteModificato(dipendenteDisp);
+        })
+    }
 
     // GESTIONE MODALE ========================================
     var modalAggiungi = document.getElementById("modale-aggiungi-personale");
     var modalDettagli = document.getElementById("modale-dettagli-personale");
     var modalModifica = document.getElementById("modale-modifica-personale");
     var modalRuoli = document.getElementById("modale-gestione-ruoli");
+    var modalDisponibili = document.getElementById("modale-lista-disponibili");
+    var modalAssegna = document.getElementById("modale-assegna-disponibile");
 
     var btn = document.getElementById("open-aggiungi-personale");
 
@@ -304,6 +384,8 @@ $(document).ready(function () {
     var spanDettagli = document.getElementsByClassName("closeD")[0];
     var spanModifica = document.getElementsByClassName("closeM")[0];
     var spanRuoli = document.getElementsByClassName("closeR")[0];
+    var spanDisponibili = document.getElementsByClassName("closeLD")[0];
+    var spanAssegna = document.getElementsByClassName("closeAD")[0];
 
     btn.onclick = function () {
         modalAggiungi.style.display = "block";
@@ -320,6 +402,14 @@ $(document).ready(function () {
     $('.open-gestione-ruoli').click(function(){
         modalRuoli.style.display = "block";
         gestioneRuoli();
+    })
+
+    $('.open-gestione-disponibili').click(function(){
+        modalDisponibili.style.display = "block";
+    })
+
+    $('#lista-disponibili').on('click', '#open-assegna-azienda', function(){
+        modalAssegna.style.display = "block";
     })
 
     spanAggiungi.onclick = function () {
@@ -339,6 +429,15 @@ $(document).ready(function () {
         $('#gestione-ruoli').html('');
     };
 
+    spanDisponibili.onclick = function () {
+        modalDisponibili.style.display = "none";
+    };
+
+    spanAssegna.onclick = function () {
+        modalAssegna.style.display = "none";
+        getDisponibili();
+    };
+
     window.onclick = function (event) {
         if (event.target == modalAggiungi) {
             modalAggiungi.style.display = "none";
@@ -349,6 +448,11 @@ $(document).ready(function () {
         } else if (event.target == modalRuoli){
             modalRuoli.style.display = "none";
             $('#gestione-ruoli').html('');
+        } else if (event.target == modalDisponibili){
+            modalDisponibili.style.display = "none";
+        } else if (event.target == modalAssegna){
+            modalAssegna.style.display = "none";
+            getDisponibili();
         }
     };
 
