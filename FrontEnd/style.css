@@ -28,7 +28,7 @@ li,a{
     text-transform: uppercase;
     display: inline;
     margin: 20px;
-    color: #FFF;
+    /*color: #FFF;*/
 }
 
 .benvenuto{
@@ -120,7 +120,7 @@ form{
   }
   
   /* The Close Button */
-  .closeA, .closeD, .closeM, .closeR{
+  .closeA, .closeD, .closeM, .closeR, .closeL, .closeLD, .closeAD{
     color: #aaa;
     float: right;
     font-size: 28px;
@@ -134,7 +134,13 @@ form{
   .closeM:hover,
   .closeM:focus,
   .closeR:hover,
-  .closeR:focus{
+  .closeR:focus,
+  .closeL:hover,
+  .closeL:focus,
+  .closeLD:hover,
+  .closeLD:focus,
+  .closeAD:hover,
+  .closeAD:focus{
     color: black;
     text-decoration: none;
     cursor: pointer;
