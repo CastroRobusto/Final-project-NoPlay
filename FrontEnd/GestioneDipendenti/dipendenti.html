@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestione dipendenti</title>
     <script src="jquery-3.6.0.min.js"></script>
-    <script src="gestioneDipendenti.js"></script>
+    <script src="dipendenti.js"></script>
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -38,6 +38,7 @@
         
         <button id="open-aggiungi-personale">Inserisci nuovo dipendente</button><br>
         <button class="open-gestione-ruoli">Gestisci ruoli</button>
+        <button class="open-gestione-disponibili">Apri la lista dei disponibili</button>
         
         <div id="modale-aggiungi-personale" class="modal">
             <div class="modal-content">
@@ -79,11 +80,42 @@
             </div>
         </div>
 
+        <div id="modale-lista-disponibili" class="modal">
+
+            <div class="modal-content">
+                <span class="closeLD">&times;</span>
+                <div id="modale-lista-disponibili">
+                    <table>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Cognome</th>
+                            <th>Data di nascita</th>
+                            <th>Opzioni</th>
+                        </tr>
+                        <tbody id="lista-disponibili">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
         <div id="modale-modifica-personale" class="modal">
 
             <div class="modal-content">
                 <span class="closeM">&times;</span>
                 <div id="modifica-personale">
+                    <table>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="modale-assegna-disponibile" class="modal">
+
+            <div class="modal-content">
+                <span class="closeAD">&times;</span>
+                <div id="modifica-disponibile">
                     
                 </div>
             </div>
