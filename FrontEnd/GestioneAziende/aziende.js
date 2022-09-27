@@ -162,19 +162,33 @@ $(document).ready(function () {
     }
 
     // LISTA DIPENDENTI PER AZIENDA
-    // Fare un metodo Java che restituisca la lista dei dipendenti +++++++++++++++++++++++++++++++++++++++++
-    
+    $('#dettagli-azienda').on('click', '#open-lista-dipendenti-azienda', function(){
+        $('#lista-dipendenti-azienda').html('');
+        listaDipendenti(+$(this).attr('data-id'));
+        
+    })
+
+    function listaDipendenti(idAzienda){
+        $.get(`aziende/dipendenti/${idAzienda}`, function(res){
+            for(let i = 0; i < res.object.length; i++){
+                console.log(res.object[i].nome);
+                $(`<p>${res.object[i].nome} ${res.object[i].cognome}</p>`).appendTo($('#lista-dipendenti-azienda'));
+            }
+        })
+    }
 
     // GESTIONE MODALI
     var modalAggiungi = document.getElementById("modale-aggiungi-azienda");
     var modalDettagli = document.getElementById("modale-dettagli-azienda");
     var modalModifica = document.getElementById("modale-modifica-azienda");
+    var modalLista = document.getElementById("modale-lista-dipendenti");
 
     var btn = document.getElementById("open-aggiungi-azienda");
 
     var spanAggiungi = document.getElementsByClassName("closeA")[0];
     var spanDettagli = document.getElementsByClassName("closeD")[0];
     var spanModifica = document.getElementsByClassName("closeM")[0];
+    var spanLista = document.getElementsByClassName("closeL")[0];
 
     btn.onclick = function () {
         modalAggiungi.style.display = "block";
@@ -186,6 +200,10 @@ $(document).ready(function () {
 
     $('#lista-aziende').on('click', '#open-modifica-azienda', function(){
         modalModifica.style.display = "block";
+    })
+
+    $('#dettagli-azienda').on('click', '#open-lista-dipendenti-azienda', function(){
+        modalLista.style.display = "block";
     })
 
     spanAggiungi.onclick = function () {
@@ -200,6 +218,10 @@ $(document).ready(function () {
         modalModifica.style.display = "none";
     };
 
+    spanLista.onclick = function () {
+        modalLista.style.display = "none";
+    };
+
     window.onclick = function (event) {
         if (event.target == modalAggiungi) {
             modalAggiungi.style.display = "none";
@@ -207,6 +229,8 @@ $(document).ready(function () {
             modalDettagli.style.display = "none";
         } else if (event.target == modalModifica){
             modalModifica.style.display = "none";
+        } else if (event.target == modalLista){
+            modalLista.style.display = "none";
         }
     };
 });
